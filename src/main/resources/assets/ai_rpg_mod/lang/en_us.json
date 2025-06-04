@@ -1,3 +1,7 @@
 {
-  "item.ai_rpg_mod.steel": "Steel"
+  "item.ai_rpg_mod.lithium": "Lithium",
+  "item.ai_rpg_mod.battery": "Battery",
+  "item.ai_rpg_mod.raw_lithium": "Raw Lithium",
+  "creativetab.ai_tab": "AI tab",
+  "block.ai_rpg_mod.lithium_ore": "Lithium Ore"
 }

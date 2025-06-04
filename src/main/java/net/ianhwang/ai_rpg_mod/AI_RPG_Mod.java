@@ -1,6 +1,8 @@
 package net.ianhwang.ai_rpg_mod;
 
 import com.mojang.logging.LogUtils;
+import net.ianhwang.ai_rpg_mod.block.ModBlocks;
+import net.ianhwang.ai_rpg_mod.item.ModCreativeModTabs;
 import net.ianhwang.ai_rpg_mod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -30,6 +32,8 @@ public class AI_RPG_Mod
         IEventBus modEventBus = context.getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModCreativeModTabs.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -52,7 +56,8 @@ public class AI_RPG_Mod
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.STEEL);
+            event.accept(ModItems.LITHIUM);
+            event.accept(ModItems.BATTERY);
         }
     }
 
