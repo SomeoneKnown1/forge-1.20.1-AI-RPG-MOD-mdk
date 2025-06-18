@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "lithium",
+  "ingredient": {
+    "item": "ai_rpg_mod:raw_lithium"
+  },
+  "result": "ai_rpg_mod:lithium"
+}

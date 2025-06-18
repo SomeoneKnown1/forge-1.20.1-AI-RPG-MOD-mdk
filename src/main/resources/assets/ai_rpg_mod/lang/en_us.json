@@ -3,5 +3,6 @@
   "item.ai_rpg_mod.battery": "Battery",
   "item.ai_rpg_mod.raw_lithium": "Raw Lithium",
   "creativetab.ai_tab": "AI tab",
-  "block.ai_rpg_mod.lithium_ore": "Lithium Ore"
+  "block.ai_rpg_mod.lithium_ore": "Lithium Ore",
+  "item.ai_rpg_mod.metal_scrap": "Metal Scrap"
 }

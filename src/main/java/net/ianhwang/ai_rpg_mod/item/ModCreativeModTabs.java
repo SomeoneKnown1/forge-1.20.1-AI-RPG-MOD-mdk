@@ -23,7 +23,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.BATTERY.get());
                         pOutput.accept(ModItems.RAW_LITHIUM.get());
                         pOutput.accept(ModBlocks.LITHIUM_ORE.get());
-
+                        pOutput.accept(ModItems.METAL_SCRAP.get());
 
                     })
                     .build());
