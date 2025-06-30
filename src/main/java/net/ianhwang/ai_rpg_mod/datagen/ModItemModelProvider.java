@@ -21,7 +21,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.METAL_SCRAP);
         simpleItem(ModItems.LITHIUM);
         simpleItem(ModItems.RAW_LITHIUM);
-        simpleItem(ModItems.BATTERY);
+
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){
