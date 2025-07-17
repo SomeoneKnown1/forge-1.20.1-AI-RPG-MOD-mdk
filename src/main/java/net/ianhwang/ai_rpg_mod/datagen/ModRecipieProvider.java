@@ -1,4 +1,5 @@
 package net.ianhwang.ai_rpg_mod.datagen;
+import net.ianhwang.ai_rpg_mod.AI_RPG_Mod;
 import net.ianhwang.ai_rpg_mod.block.ModBlocks;
 import net.ianhwang.ai_rpg_mod.item.ModItems;
 import net.minecraft.data.PackOutput;
@@ -8,32 +9,34 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-public class ModRecipieProvider extends RecipeProvider implements IConditionBuilder{
-    private static final List<ItemLike> SAPPHIRE_SMELTABLES = List.of(ModItems.RAW_SAPPHIRE.get(),
-            ModBlocks.SAPPHIRE_ORE.get(), ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), ModBlocks.NETHER_SAPPHIRE_ORE.get(),
-            ModBlocks.END_STONE_SAPPHIRE_ORE.get());
 
-    public ModRecipeProvider(PackOutput pOutput) {
+import java.util.List;
+import java.util.function.Consumer;
+
+public class ModRecipieProvider extends RecipeProvider implements IConditionBuilder{
+    private static final List<ItemLike> LITHIUM_SMELTABLES = List.of(ModItems.RAW_LITHIUM.get(),
+            ModBlocks.LITHIUM_ORE.get());
+
+    public ModRecipieProvider(PackOutput pOutput) {
         super(pOutput);
     }
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        oreSmelting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 0.25f, 200, "sapphire");
-        oreBlasting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 0.25f, 100, "sapphire");
+        oreSmelting(pWriter, LITHIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LITHIUM.get(), 0.25f, 200, "lithium");
+        oreBlasting(pWriter, LITHIUM_SMELTABLES, RecipeCategory.MISC, ModItems.LITHIUM.get(), 0.25f, 100, "lithium");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SAPPHIRE_BLOCK.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BATTERY.get())
                 .pattern("SSS")
                 .pattern("SSS")
-                .pattern("SSS")
-                .define('S', ModItems.SAPPHIRE.get())
-                .unlockedBy(getHasName(ModItems.SAPPHIRE.get()), has(ModItems.SAPPHIRE.get()))
+                .define('S', ModItems.LITHIUM.get())
+                .unlockedBy(getHasName(ModItems.LITHIUM.get()), has(ModItems.LITHIUM.get()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 9)
-                .requires(ModBlocks.SAPPHIRE_BLOCK.get())
-                .unlockedBy(getHasName(ModBlocks.SAPPHIRE_BLOCK.get()), has(ModBlocks.SAPPHIRE_BLOCK.get()))
-                .save(pWriter);
+        //ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 9)
+               // .requires(ModBlocks.SAPPHIRE_BLOCK.get())
+               // .unlockedBy(getHasName(ModBlocks.SAPPHIRE_BLOCK.get()), has(ModBlocks.SAPPHIRE_BLOCK.get()))
+              //  .save(pWriter);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
@@ -49,7 +52,7 @@ public class ModRecipieProvider extends RecipeProvider implements IConditionBuil
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult,
                             pExperience, pCookingTime, pCookingSerializer)
                     .group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
-                    .save(pFinishedRecipeConsumer,  TutorialMod.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
+                    .save(pFinishedRecipeConsumer,  AI_RPG_Mod.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
     }
 }
