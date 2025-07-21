@@ -13,11 +13,11 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ModRecipieProvider extends RecipeProvider implements IConditionBuilder{
+public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder{
     private static final List<ItemLike> LITHIUM_SMELTABLES = List.of(ModItems.RAW_LITHIUM.get(),
             ModBlocks.LITHIUM_ORE.get());
 
-    public ModRecipieProvider(PackOutput pOutput) {
+    public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
 

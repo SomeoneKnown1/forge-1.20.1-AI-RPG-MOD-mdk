@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "ai_rpg_mod:block/lithium_ore"
-  }
-}
