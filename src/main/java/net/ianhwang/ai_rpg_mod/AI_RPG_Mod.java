@@ -2,10 +2,14 @@ package net.ianhwang.ai_rpg_mod;
 
 import com.mojang.logging.LogUtils;
 import net.ianhwang.ai_rpg_mod.block.ModBlocks;
+import net.ianhwang.ai_rpg_mod.entity.ModEntities;
+import net.ianhwang.ai_rpg_mod.entity.client.EvilAIBotRenderer;
 import net.ianhwang.ai_rpg_mod.item.ModCreativeModTabs;
 import net.ianhwang.ai_rpg_mod.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -34,6 +38,7 @@ public class AI_RPG_Mod
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModTabs.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -75,7 +80,7 @@ public class AI_RPG_Mod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(ModEntities.EvilAIBot.get(), EvilAIBotRenderer::new);
         }
     }
 }
